@@ -3,12 +3,113 @@
 
 <head>
     <title>Nostra Conventions</title>
-    <meta charset="utf8">
+    <meta charset="utf-8">
 </head>
 
 <body>
     <h1>Tests</h1>
-    TODO
+
+    <h4>Test Names</h4>
+
+    <p>
+        The name of every test follows this schema:
+    </p>
+    <p>
+        [prefix].[language].[execution type].[success requirement].[name].[test type].[number]
+    </p>
+
+    <dl>
+        <dt>
+            prefix
+        </dt>
+        <dd>
+            The prefix of the library that is being tested.
+        </dd>
+        <dt>
+            language
+        </dt>
+        <dd>
+            The language of the test. This is either <b>c</b> for C test, <b>cpp</b> for a C++ test or <b>c.cpp</b> for
+            a C test that was automatically converted into a C++ test (see <a href="tools.html#nostracmake">here</a>).
+        </dd>
+        <dt>
+            execution type
+        </dt>
+        <dd>
+            Either <b>bu</b> or <b>ex</b>. <b>bu</b> if the test will only be built but not executed; <b>ex</b> if the
+            test will be built and the resulting executable will be executed.
+        </dd>
+        <dt>
+            success requirement
+        </dt>
+        <dd>
+            Either <b>s</b> or <b>f</b>. <b>s</b> if the test must succeed (s = success); <b>f</b> if the test must
+            fail (f = fail). Requiring that a test must fail is often useful with <b>bu</b> tests, to make sure that
+            a specific piece of code does not compile.
+        </dd>
+        <dt>
+            name
+        </dt>
+        <dd>
+            The name of the component that is being tested. If the test does not test a single component, the name must
+            be chosen appropriately for the specific test.
+        </dd>
+        <dt>
+            test type
+        </dt>
+        <dd>
+            Either <b>wt</b> or <b>bt</b>. <b>wt</b> if the test is a whitebox; <b>bt</b> if the test is a blackbox
+            test.
+        </dd>
+        <dt>
+            number
+        </dt>
+        <dd>
+            The number of the test (if two tests would otherwise have the same name, this is used to differentiate
+            between them). Usually, tests will not have the same name, but in the case of tests that should fail
+            (the success requirement is <b>f</b>), it is often necessary to have multiple tests for a single component.
+            Also, this part of the test name is optional, if there is only one test with the same name (in that case,
+            the number and the dot (.) that preceded it are just left out). Numbering starts at one (1).
+        </dd>
+    </dl>
+
+    <p><b>Example:</b></p>
+    <dl>
+        <dt>
+            ntp.cpp.bu.s.string.wt
+        </dt>
+        <dd>
+            A C++ test for a project with the prefix "ntp" that should succeed. The test is a whitebox test with the
+            name "string". Also, the test will only build the test but not execute it.
+        </dd>
+        <dt>
+            ntp.c.ex.f.socket.bt.2
+        </dt>
+        <dd>
+            A C test for a project with the prefix "ntp" that should fail. The test is a blackbox test with the
+            name "socket". This test is the second with that signature, there is also another test called
+            ntp.c.ex.f.socket.bt.1.
+        </dd>
+    </dl>
+
+    <p>
+        The purpose of having such a strict syntax for test names is, that using <code>ctest</code>, it is very easy
+        to just execute tests with a certain trait (e.g.: <code>ctest -R '.ex.'</code> can be used to run all tests
+        that have the execution type <b>ex</b>).
+    </p>
+
+    <h4>Test Directory Structure</h4>
+    All tests are nested in the directory <b>/test/</b> (see <a href="project_directory_structure.html">here</a>), but
+    each test has its own structure that is nested in the directory <b>/test/</b>. The structure for each test looks
+    like this (<bold>bold</bold> names are directories and names in <i>(italics and round braces)</i> are optional
+    files or directories):
+    <pre>
+&lt;test name&gt;.wt.d
+├── resources
+│   └── &lt;resources&gt;
+└── src
+    └── &lt;test name&gt;.wt.cpp
+    └── source.cpp</pre>
 
     <nav>
         <a href="readme_structure.html">&larr; README Structure</a> |
