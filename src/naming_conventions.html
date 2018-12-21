@@ -8,7 +8,527 @@
 
 <body>
     <h1>Naming Conventions</h1>
-    TODO
+    The following chapters describe the naming conventions for various naming classes (e.g. function or files).
+
+    <h3>Notations</h3>
+    There are a total of three notations used for names:
+
+    <dl>
+        <dt>
+            upper camel case
+        </dt>
+        <dd>
+            A name style where the single words within a name are written right next to each other and each new word
+            starts with an uppercase letter. The remaining letters are written in lowercase. The first word also starts
+            with an uppercase letter.
+
+            <p><b>Example</b>: ThisIsUpperCamelCase</p>
+        </dd>
+        <dt>
+            lower camel case
+        </dt>
+        <dd>
+            Just like upper camel case, but the first letter of the entire name is a lowercase letter.
+
+            <p><b>Example</b>: thisIsLowerCamelCase</p>
+
+            <p>
+                Lower camel case is currently not used for any of the names in the Nostra project.
+            </p>
+        </dd>
+        <dt>
+            underscore separated
+        </dt>
+        <dd>
+            A name style where the single words within a name are separated by underscores (the character "_"). Each
+            word in the name is written in lowercase letters.
+
+            <p><b>Example</b>: this_is_underscore_separated</p>
+
+            There is also a variant that only uses uppercase letters.
+
+            <p><b>Example</b>: THIS_IS_UNDERSCORE_SEPARATED</p>
+        </dd>
+    </dl>
+
+    <h3>Prefixes and Suffixes</h3>
+    In addition to the name Notation, each name may also have a prefix and/or suffix. They do not follow the name
+    notation, but instead are just added to the name exactly the way that they are given. The prefix and suffix is also
+    optional, not every name has one.
+
+    <h3>Naming table</h3>
+    The following table lists the different conventions for the different naming classes.
+
+    <table>
+        <tr>
+            <th>
+                Naming class
+            </th>
+            <th>
+                Prefix
+            </th>
+            <th>
+                Name notation
+            </th>
+            <th>
+                Suffix
+            </th>
+            <th>
+                Example
+            </th>
+            <th>
+                Has C prefix?
+            </th>
+        </tr>
+        <tr>
+            <td>
+                project name
+            </td>
+            <td>
+                Nostra
+            </td>
+            <td>
+                upper camel case
+            </td>
+            <td>
+
+            </td>
+            <td>
+                NostraTestProject
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                header file
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+                .hpp or .h (C++ or C)
+            </td>
+            <td>
+                my_component.hpp
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                source file
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+                .cpp or .c (C++ or C)
+            </td>
+            <td>
+                my_component.cpp
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                global function
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>my_function</code>
+            </td>
+            <td>
+                &#10003;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                global variable
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>my_global</code>
+            </td>
+            <td>
+                &#10003;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                global constant
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated (uppercase)
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>MY_CONSTANT</code>
+            </td>
+            <td>
+                &#10003;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                global alias
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>my_alias</code>
+            </td>
+            <td>
+                &#10003;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                macro
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated (uppercase)
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>MY_MACRO</code>
+            </td>
+            <td>
+                &#10003;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                meta function
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>my_meta_function</code>
+            </td>
+            <td>
+                Does not exist in C
+            </td>
+        </tr>
+        <tr>
+            <td>
+                meta function macro
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+                _t
+            </td>
+            <td>
+                <code>my_meta_function_t</code>
+            </td>
+            <td>
+                Does not exist in C
+            </td>
+        </tr>
+        <tr>
+            <td>
+                class/struct
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>my_class</code>
+            </td>
+            <td>
+                Does not exist in C
+            </td>
+        </tr>
+        <tr>
+            <td>
+                POD struct member variable
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>my_variable</code>
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                POD struct member constant
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated (uppercase)
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>MY_CONSTANT</code>
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                member function
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>my_member_function</code>
+            </td>
+            <td>
+                Does not exist in C
+            </td>
+        </tr>
+        <tr>
+            <td>
+                member variable
+            </td>
+            <td>
+                m_
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>m_my_member_variable</code>
+            </td>
+            <td>
+                Does not exist in C
+            </td>
+        </tr>
+        <tr>
+            <td>
+                member constant
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated (uppercase)
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>MY_MEMBER_CONSTANT</code>
+            </td>
+            <td>
+                Does not exist in C
+            </td>
+        </tr>
+        <tr>
+            <td>
+                member alias
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>my_member_alias</code>
+            </td>
+            <td>
+                Does not exist in C
+            </td>
+        </tr>
+        <tr>
+            <td>
+                static member variable
+            </td>
+            <td>
+                s_
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>s_my_static_member_variable</code>
+            </td>
+            <td>
+                Does not exist in C
+            </td>
+        </tr>
+        <tr>
+            <td>
+                function parameter
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>my_parameter</code>
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                macro
+            </td>
+            <td>
+                __
+            </td>
+            <td>
+                underscore separated (uppercase)
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>__MY_MACRO_PARAMETER</code>
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                local variable
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>my_local_variable</code>
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                local constant
+            </td>
+            <td>
+
+            </td>
+            <td>
+                underscore separated (uppercase)
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <code>MY_LOCAL_CONSTANT</code>
+            </td>
+            <td>
+
+            </td>
+        </tr>
+    </table>
+
+    <p>
+        The names that have the symbol &#10003; in the column <b>Has C prefix?</b> have an additional prefix if the
+        project is a C project. The prefix is the project prefix (in all lowercase or uppercase, depending on the style
+        of the name notation) followed by an underscore. Note that these C prefixes are not part of the examples in the
+        table, but a global function C would look like this <code>ntp_my_function</code> (if the project prefix is
+        <i>ntp</i>).
+    </p>
 
     <nav>
         <a href="versioning.html">&larr; Versioning</a> |
