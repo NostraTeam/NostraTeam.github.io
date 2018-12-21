@@ -12,7 +12,7 @@
     <h3>Test Names</h3>
 
     <p>
-        The name of every test follows this schema:
+        The name of every test follows this schema (also called <i>full name</i>):
     </p>
     <p>
         [prefix].[language].[execution type].[success requirement].[name].[test type].[number]
@@ -68,15 +68,14 @@
             The number of the test (if two tests would otherwise have the same name, this is used to differentiate
             between them). Usually, tests will not have the same name, but in the case of tests that should fail
             (the success requirement is <b>f</b>), it is often necessary to have multiple tests for a single component.
-            Also, this part of the test name is optional, if there is only one test with the same name (in that case,
-            the number and the dot (.) that preceded it are just left out). Numbering starts at one (1).
+            Numbering starts at one (1).
         </dd>
     </dl>
 
     <p><b>Example:</b></p>
     <dl>
         <dt>
-            ntp.cpp.bu.s.string.wt
+            ntp.cpp.bu.s.string.wt.1
         </dt>
         <dd>
             A C++ test for a project with the prefix "ntp" that should succeed. The test is a whitebox test with the
@@ -100,15 +99,16 @@
 
     <h3>Test Directory Structure</h3>
     All tests are nested in the directory <b>/test/</b> (see <a href="project_directory_structure.html">here</a>), but
-    each test has its own structure that is nested in the directory <b>/test/</b>. The structure for each test looks
-    like this (<bold>bold</bold> names are directories and names in <i>(italics and round braces)</i> are optional
-    files or directories):
+    each test has its own structure that is nested within that directory. The structure for each test looks like this
+    (<bold>bold</bold> names are directories and names in <i>(italics and round braces)</i> are optional files or
+    directories):
     <pre>
-&lt;test name&gt;.wt.d
+&lt;prefix&gt;.&lt;language&gt;.&lt;execution type&gt;.&lt;success requirement&gt;.&lt;test name&gt;.&lt;test type&gt;
+&lt;number&gt;.d
 ├── resources
 │   └── &lt;resources&gt;
 └── src
-    └── &lt;test name&gt;.wt.cpp
+    └── test.&lt;language extension&gt;
     └── source.cpp</pre>
 
     <nav>

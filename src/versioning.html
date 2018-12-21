@@ -8,7 +8,292 @@
 
 <body>
     <h1>Versioning</h1>
-    TODO
+    <h3>Version Layout</h3>
+    <p>
+        Versions in the Nostra Project follow the same structure:
+    </p>
+    <p>
+        [major].[minor].[patch].[tweak]
+    </p>
+    <p>
+        Each of these parts have an integer values that is larger than or equal to zero.
+
+        The first two parts of the version (<i>major</i> and <i>minor</i>) are called the <i>main part</i>. The parts
+        <i>patch</i> and <i>tweak</i> do not have special names.
+
+        Also the different parts have different weights, <i>major</i> has the most weight, <i>minor</i> the second most
+        weight, <i>patch</i> the third most weight and <i>tweak</i> has the least weight.
+    </p>
+    <p><b>Example:</b></p>
+    <dl>
+        <dt>
+            <code>1.3.0.2</code>
+        </dt>
+        <dd>
+            The version has the main part <i>1.3</i>. There have been no patches yet, but three tweaks.
+        </dd>
+    </dl>
+
+    <h3>Comparing versions</h3>
+    Comparing two versions starts with the <i>major</i> part. The version with the higher <i>major</i> part is the
+    higher version and the values of the other parts do not matter. If the <i>major</i> parts have the same value, the
+    version with the higher <i>minor</i> part will be the higher version. If the <i>minor</i> parts have also the same
+    value, the <i>patch</i> part will decide which version is higher and so on.
+
+    <p><b>Example:</b></p>
+    <dl>
+        <dt>
+            <code>3.0.2.7</code> vs. <code>1.3.6.9</code>
+        </dt>
+        <dd>
+            The first version is the higher one, because its <i>major</i> part is larger.
+        </dd>
+        <dt>
+            <code>3.0.2.7</code> vs. <code>3.0.3.8</code>
+        </dt>
+        <dd>
+            The second version is the higher one, because its <i>patch</i> part is larger and the <i>main part</i> of
+            the versions are the same.
+        </dd>
+    </dl>
+
+    <h3>Incrementing Versions</h3>
+    When incrementing versions, no version numbers can be skipped (e.g. when a tweak is applied to the version
+    <code>1.0.0.0</code>, the version will always be 1.0.0.1 afterwards). Also, only one part can be incremented per
+    update.
+
+    In addition to that, when a part is incremented, all parts that have a lower weight than the part that was
+    incremented, will be reset to zero.
+
+    <p><b>Example:</b></p>
+    <p>
+        Incrementing the minor part of the version <code>1.2.3.4</code> would result in the version
+        <code>1.3.0.0</code>.
+    </p>
+
+    <h3>What can change per version</h3>
+    <p>
+        Not everything can change from version to version. The following chapters describe what features can change
+        from
+        version to version.
+    </p>
+
+    <p>
+        Note that, every version may also make changes that are only listed in the chapters of the version that have
+        lower
+        weights.
+    </p>
+
+    <h4>Major</h4>
+    With <i>major</i> version changes, everything may change (this includes backwards compatibility,
+    <i>major</i> do not have to be backwards compatible).
+
+    <h4>Minor</h4>
+    With <i>minor</i> version changes, features can be added and modified in a manor that preserves backwards
+    compatibility. Features can be deprecated but not removed.
+
+    <h4>Patch</h4>
+    With <i>patch</i> version changes, bugs can be fixed and existing features can be improved. The behavior of
+    features can not be changed unless a certain features was previously misbehaving (in this case, the modification
+    of the behavior counts as bug fix).
+
+    <h4>Tweak</h4>
+    With <i>tweak</i> version changes, everything that can be done in a <i>patch</i> can also be done. However, tweaks
+    are supposed to be smaller - patches are meant to be used to deploy a collection of fixes and improvements, tweaks
+    are meant to be used to deploy only a single or very few fixes and improvements.
+
+    <h4>Table of changes</h4>
+    <p>
+        The following table describes what can be changed in what version.
+    </p>
+
+    <table>
+        <tr>
+            <th>
+                Feature
+            </th>
+            <th>
+                <i>major</i>
+            </th>
+            <th>
+                <i>minor</i>
+            </th>
+            <th>
+                <i>patch</i>
+            </th>
+            <th>
+                <i>tweak</i>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                Add features
+            </td>
+            <td>
+                &#10003;
+            </td>
+            <td>
+                &#10003;
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Remove features
+            </td>
+            <td>
+                &#10003;
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Modify features
+            </td>
+            <td>
+                &#10003;
+            </td>
+            <td>
+                &#10003; *
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Deprecate features
+            </td>
+            <td>
+                &#10003;
+            </td>
+            <td>
+                &#10003;
+            </td>
+            <td>
+
+            </td>
+            <td>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Implement bug fixes
+            </td>
+            <td>
+                &#10003;
+            </td>
+            <td>
+                &#10003;
+            </td>
+            <td>
+                &#10003;
+            </td>
+            <td>
+                &#10003;
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Implement improvements
+            </td>
+            <td>
+                &#10003;
+            </td>
+            <td>
+                &#10003;
+            </td>
+            <td>
+                &#10003;
+            </td>
+            <td>
+                &#10003;
+            </td>
+        </tr>
+    </table>
+    <p>
+        * When keeping backwards compatibility
+    </p>
+
+    <h3>Versioned parts of a project</h3>
+    <dl>
+        <dd>
+            the project
+        </dd>
+        <dl>
+            The project itself has a version. When the first full version of a project is released, it will have the
+            version <code>1.0.0.0</code>.
+        </dl>
+        <dd>
+            code and code files
+        </dd>
+        <dl>
+            Each file and code piece (such as functions, alias names and classes) have two versions. The versions are
+            the version that the respective piece of code or file was added in and the last version that it was updated
+            in. Those versions will be stored in the Doxygen documentation the commands <code>\since</code> and
+            <code>\version</code> respectively.
+
+            Note that the last-modified version (the <code>\version</code> one) needs to be updated in a cascading
+            manor. This means, that if a piece of code is updated, not only its own last-modified version needs to be
+            updated and all of the last-modified versions of the code pieces and the file that it is nested in needs to
+            be updated as well.
+
+            <p><b>Example:</b></p>
+            <p>
+                If a member function called <code>test_member()</code> is a member of the class
+                <code>test_type</code> in the namespace <code>ntp</code> in the file <code>test_type.hpp</code> is
+                updated, the last-modified versions of the member function itself, the class, the namespace and the
+                file need to be updated.
+            </p>
+
+            The first-added version (<code>\since</code>) never changes after it was set for the fist time.
+        </dl>
+        <dd>
+            file level code
+        </dd>
+        <dl>
+            Just like files, file level code (such as global functions and alias names) also has a version that that
+            specific code was added in and the version that it was last
+        </dl>
+    </dl>
+
+    <h3>Versions in Code</h3>
+    <p>
+        The <b>NostraBase</b> library adds support for versions in code.
+    </p>
+
+    <h4>Macros</h4>
+    The library provides the macros <code>NBA_MAKE_VERSION</code> and <code>NBA_GET_VERSION_*</code> (* stands for
+    <code>MAJOR</code>, <code>MINOR</code>, <code>PATCH</code> or <code>TWEAK</code>). The macro
+    <code>NBA_MAKE_VERSION</code> can be used to create a version from four integer numbers representing the single
+    parts of the version. <code>NBA_GET_VERSION_*</code> can be used to get the respective part from a version that
+    was created using <code>NBA_MAKE_VERSION</code>.
+
+    Versions that were created by <code>NBA_MAKE_VERSION</code> can be compared using the regular comparison
+    operators (<code>!=</code>, <code>==</code>, <code>&gt;</code>, <code>&lt;</code>, etc.).
+
+    <h4>Class</h4>
+    When the C++ features are enabled, <b>NostraBase</b> also provides the class <code>nba::Version</code>. Similar to
+    the <code>NBA_MAKE_VERSION</code> macro, the constructor of <code>nba::Version</code> takes four integer numbers
+    that represent the single parts of the version. It also provides getters/setters for the parts and suitable
+    operators for comparison.
 
     <nav>
         <a href="introduction.html">&larr; Introduction</a> |
