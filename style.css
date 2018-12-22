@@ -1,0 +1,19 @@
+body {
+    max-width: 750px;
+    margin: auto;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 2px;
+}
+
+nav {
+    text-align: center;
+    padding: 5px;
+}
+
+.has_c_prefix_td {
+    text-align: center;
+}
