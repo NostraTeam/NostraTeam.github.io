@@ -43,24 +43,21 @@
 │   ├── DoxygenLayout.xml
 │   └── style.css
 ├── <b>examples</b>
-│   └── <b>&lt;test name&gt;.ex.d</b>
-│       └── &lt;test name&gt;.ex.cpp
+│   └── <b>&lt;example name&gt;.ex.d</b>
+│       └── &lt;example name&gt;.ex.cpp
 ├── <b>include</b>
 │   └── <b>nostra</b>
 │       └── <b>&lt;project name&gt;</b>
-│           └── &lt;test name&gt;.hpp
+│           └── &lt;component name&gt;.hpp
 ├── <b>src</b>
-│   └── &lt;test name&gt;.cpp
+│   └── &lt;component name&gt;.cpp
 ├── <b>test</b>
-│   ├── <b>&lt;test name&gt;.bt.d</b>
-│   │   └── <b>src</b>
-│   │       └── &lt;test name&gt;.bt.cpp
-│   └── <b>&lt;test name&gt;.wt.d</b>
+│   └── <b>&lt;test name&gt;.d</b>
 │       ├── <b>resources</b>
-│       │   └── resource.txt
+│       │   └── <i>(&lt;resource file&gt;)</i>
 │       └── <b>src</b>
 │           └── &lt;test name&gt;.wt.cpp
-│           └── source.cpp
+│           └── <i>(source.cpp)</i>
 ├── .clang-format
 ├── .clang-tidy
 ├── .gitattributes
@@ -159,7 +156,286 @@
         </tr>
     </table>
 
-    TODO: the remaining files
+    <h3>/cmake/CPackConfig.cmake.in</h3>
+    <p>
+        A file that will be configured by CMake. It will be used to configure CPack and it contains a collection of
+        <code>set</code> statements.
+    </p>
+
+    <h3>/cmake/Nostra&lt;project name&gt;.cmake.in</h3>
+    <p>
+        A file that will be configured by CMake. By default, it only includes the default configuration file generated
+        by CMake.
+    </p>
+
+    <p>
+        It is possible to read more about the usage of this file
+        <a href="https://cmake.org/cmake/help/v3.9/manual/cmake-packages.7.html#package-configuration-file">here</a>.
+    </p>
+
+    <p>
+        &lt;project name&gt; is the name of the project in upper camel case.
+        <p>
+            <b>Example:</b> For a project called TestProject, the filename would be
+            <i>NostraTestProjectConfig.cmake.in</i>.
+        </p>
+    </p>
+
+    <h3>/cmake/welcome.txt.in</h3>
+    <p>
+        A file that will be configured by CMake. This file can be used by CPack installers to welcome a user.
+    </p>
+
+    <h3>/doc</h3>
+    <p>
+        A directory that contains files that are used by Doxygen to generate the documentation for the project.
+    </p>
+
+    <h3>/doc/dot</h3>
+    <p>
+        A directory that contains dotfiles that can be included into a Doxygen comment using <code>\dot</code>.
+    </p>
+
+    <h3>/doc/img</h3>
+    <p>
+        A directory that contains image files that can be included into a Doxygen comment using <code>\image</code>.
+    </p>
+
+    <h3>additional_documentation.dox</h3>
+    <p>
+        A file that contains additional documentation that can/should not be put into regular source files. These
+        include additional pages (<code>\page</code>) or, for example, the documentation of namespaces.
+    </p>
+
+    <h3>/doc/Doxyfile.in</h3>
+    <p>
+        The template for the Doxyfile used by Doxygen that will be configured by CMake (to inject e.g. the project
+        name).
+    </p>
+
+    <p>
+        Usually, the default Doxyfile.in should not be modified.
+    </p>
+
+    <h3>/doc/DoxygenLayout.xml</h3>
+    <p>
+        The DoxygenLayout.xml file used by Doxygen.
+    </p>
+
+    <p>
+        Usually, the default DoxygenLayout.xml should not be modified.
+    </p>
+
+    <h3>/doc/style.css</h3>
+    <p>
+        A CSS file that can be used to style the output of Doxygen.
+    </p>
+
+    <h3>/examples</h3>
+    <p>
+        A directory that contains the examples that are provided by the library.
+    </p>
+
+    <h3>/examples/&lt;example name&gt;.ex.d</h3>
+    <p>
+        A directory that contains the source file of one particular examples.
+    </p>
+
+    <p>
+        Note that there is a directory for each example. Thus, this chapter may describe more than one directory.
+    </p>
+
+    <p>
+        <a href="examples.html">This page</a> provides more information on how to write examples and what &lt;example
+        name&gt; stands for in this case.
+    </p>
+
+    <h3>/examples/&lt;example name&gt;.ex.d/&lt;example name&gt;.ex.cpp</h3>
+    <p>
+        The source file of the example with the name &lt;example name&gt;.
+    </p>
+
+    <p>
+        Note that there is a source file for each example. Thus, this chapter may describe more than one file.
+    </p>
+
+    <p>
+        <a href="examples.html">This page</a> provides more information on how to write examples and what &lt;example
+        name&gt; stands for in this case.
+    </p>
+
+    <h3>/include, /include/nostra and /include/nostra/&lt;project name&gt;</h3>
+    <p>
+        A directory that contains the header files of the project.
+    </p>
+
+    <p>
+        &lt;project name&gt; is the name of the project in all lowercase letters and with no spaces.
+        <p>
+            <b>Example:</b> For a project called TestProject, the name would be <i>testproject</i>.
+        </p>
+    </p>
+
+    <h3>/include/nostra/&lt;project name&gt;/&lt;component name&gt;.cpp</h3>
+    <p>
+        The header file of a single component.
+    </p>
+
+    <p>
+        Note that there is a header file for each component. Thus, this chapter may describe more than one file.
+    </p>
+
+    <p>
+        &lt;component name&gt; is the name of the component that the header belongs to (in the underscore separator
+        notation).
+    </p>
+
+    <h3>/src/&lt;component name&gt;.cpp</h3>
+    <p>
+        The source file of a single component.
+    </p>
+    <p>
+        Note that there is a source file for each component. Thus, this chapter may describe more than one file.
+        Also, there always exists a source file
+    </p>
+
+    <p>
+        &lt;component name&gt; is the name of the component that the source file belongs to (in the underscore
+        separator notation).
+    </p>
+
+    <h3>/test</h3>
+    <p>
+        A directory that contains the test for the library.
+    </p>
+
+    <h3>/test/&lt;test name&gt;.d</h3>
+    <p>
+        The directory for the test with the name &lt;test name&gt;.
+    </p>
+
+    <p>
+        Note that there is a directory for each test. Thus, this chapter may describe more than one directory.
+    </p>
+
+    <p>
+        <a href="tests.html">This page</a> provides more information on how to write tests and what &lt;test name&gt;
+        stands for in this case.
+    </p>
+
+    <h3>/test/&lt;test name&gt;.d/resources</h3>
+    <p>
+        <i>optional</i>
+    </p>
+
+    <p>
+        A directory that contains various resources that are required by the test. This directory only exists if the
+        test actually requires resource file(s).
+    </p>
+
+    <p>
+        <a href="tests.html">This page</a> provides more information on how to write tests and what &lt;test name&gt;
+        stands for in this case.
+    </p>
+
+    <h3>/test/&lt;test name&gt;.d/resources/(&lt;resource file&gt;)</h3>
+    <p>
+        <i>optional</i>
+    </p>
+
+    <p>
+        A resource file for the test.
+    </p>
+
+    <p>
+        Note that a test may have multiple resource files. Thus, this chapter may describe more than one file (or none,
+        if the test does not require any resource files).
+    </p>
+
+    <p>
+        <a href="tests.html">This page</a> provides more information on how to write tests and what &lt;test name&gt;
+        stands for in this case.
+    </p>
+
+    <h3>/test/&lt;test name&gt;.d/src</h3>
+    <p>
+        A directory that contains all source files that are required to build the test.
+    </p>
+
+    <p>
+        <a href="tests.html">This page</a> provides more information on how to write tests and what &lt;test name&gt;
+        stands for in this case.
+    </p>
+
+    <h3>/test/&lt;test name&gt;.d/src/&lt;test name&gt;.cpp</h3>
+    <p>
+        The default source file of the test.
+    </p>
+
+    <p>
+        <a href="tests.html">This page</a> provides more information on how to write tests and what &lt;test name&gt;
+        stands for in this case.
+    </p>
+
+    <h3>/test/&lt;test name&gt;.d/src/source.cpp</h3>
+    <p>
+        <i>optional</i>
+    </p>
+
+    <p>
+        Additional source file(s) for the test.
+    </p>
+
+    <p>
+        Note that a test may have multiple additional source files. Thus, this chapter may describe more than one file
+        (or none, if the test does not require any additional source files). Also, the name <code>source.cpp</code> is
+        only a placeholder and the file(s) can have any name.
+    </p>
+
+    <p>
+        <a href="tests.html">This page</a> provides more information on how to write tests and what &lt;test name&gt;
+        stands for in this case.
+    </p>
+
+    <h3>/.clang-format</h3>
+    The configuration file for clang-format.
+
+    <h3>/.clang-tidy</h3>
+    The configuration file for clang-tidy.
+
+    <h3>/.gitattributes</h3>
+    The .gitattributes file.
+
+    <h3>/.gitignore</h3>
+    The .gitignore file.
+
+    <h3>/.travis.yml</h3>
+    <p>
+        <i>optional</i>
+    </p>
+
+    <p>
+        The configuration file for TravisCI. This file is only present if TravisCI is actually used.
+    </p>
+
+    <h3>/CMakeLists.txt</h3>
+    <p>
+        The CMake configuration file.
+    </p>
+
+    <h3>/LICENSE</h3>
+    <p>
+        The license file. Usually, Nostra projects are published under the MIT license.
+    </p>
+
+    <h3>/README.md</h3>
+    <p>
+        The readme file of the project.
+    </p>
+
+    <p>
+        <a href="readme_structure.html">This page</a> provides more information on how to write a readme file.
+    </p>
 
     <nav>
         <a href="naming_conventions.html">&larr; Naming Conventions</a> |
