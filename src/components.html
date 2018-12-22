@@ -8,7 +8,26 @@
 
 <body>
     <h1>Components</h1>
-    TODO
+    <p>
+        Components are a logical structure to organize features in a project.
+    </p>
+
+    <p>
+        A component contains all classes, functions and other code that belongs to a particular feature. Also, each
+        component has a header file, a source file, (at least) one test and an example. The source file is always
+        present, even if it would not have any code in it (for example if all functions are defined in the header
+        because they are templates or marked as <code>inline</code>).
+        In addition to that, each component has a name that must be appropriate for its content. Usually, each
+        component has a "main" class. If so, that class would usually have the same name as the component.
+    </p>
+    <p><b>Example:</b></p>
+    <p>
+        A component that implements a linked list may have the name <i>linked_list</i>. In that case the header
+        file and source file would be called <i>linked_list.hpp</i> and <i>linked_list.cpp</i> respectively. It would
+        provide the class <code>linked_list</code> and perhaps iterator classes for the linked list. Additionally,
+        there would (at least) be the test <i>ntp.cpp.ex.s.linked_list.wt.1</i> (in this case, <i>ntp</i> was chosen
+        as prefix) and the example <i>linked_list.ex</i>.
+    </p>
 
     <nav>
         <a href="project_directory_structure.html">&larr; Project Directory Structure</a> |
