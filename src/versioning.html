@@ -235,17 +235,17 @@
 
     <h3>Versioned parts of a project</h3>
     <dl>
+        <dt>
+            <b>the project</b>
+        </dt>
         <dd>
-            the project
-        </dd>
-        <dl>
             The project itself has a version. When the first full version of a project is released, it will have the
             version <code>1.0.0.0</code>.
-        </dl>
-        <dd>
-            code and code files
         </dd>
-        <dl>
+        <dt>
+            <b>code and code files</b>
+        </dt>
+        <dd>
             Each file and code piece (such as functions, alias names and classes) have two versions. The versions are
             the version that the respective piece of code or file was added in and the last version that it was updated
             in. Those versions will be stored in the Doxygen documentation the commands <code>\since</code> and
@@ -265,14 +265,7 @@
             </p>
 
             The first-added version (<code>\since</code>) never changes after it was set for the fist time.
-        </dl>
-        <dd>
-            file level code
         </dd>
-        <dl>
-            Just like files, file level code (such as global functions and alias names) also has a version that that
-            specific code was added in and the version that it was last
-        </dl>
     </dl>
 
     <h3>Versions in Code</h3>
@@ -281,23 +274,28 @@
     </p>
 
     <h4>Macros</h4>
-    The library provides the macros <code>NBA_MAKE_VERSION</code> and <code>NBA_GET_VERSION_*</code> (* stands for
-    <code>MAJOR</code>, <code>MINOR</code>, <code>PATCH</code> or <code>TWEAK</code>). The macro
-    <code>NBA_MAKE_VERSION</code> can be used to create a version from four integer numbers representing the single
-    parts of the version. <code>NBA_GET_VERSION_*</code> can be used to get the respective part from a version that
-    was created using <code>NBA_MAKE_VERSION</code>.
+    <p>
+        The library provides the macros <code>NBA_MAKE_VERSION</code> and <code>NBA_GET_VERSION_*</code> (* stands for
+        <code>MAJOR</code>, <code>MINOR</code>, <code>PATCH</code> or <code>TWEAK</code>). The macro
+        <code>NBA_MAKE_VERSION</code> can be used to create a version from four integer numbers representing the single
+        parts of the version. <code>NBA_GET_VERSION_*</code> can be used to get the respective part from a version that
+        was created using <code>NBA_MAKE_VERSION</code>.
+    </p>
 
-    Versions that were created by <code>NBA_MAKE_VERSION</code> can be compared using the regular comparison
-    operators (<code>!=</code>, <code>==</code>, <code>&gt;</code>, <code>&lt;</code>, etc.).
+    <p>
+        Versions that were created by <code>NBA_MAKE_VERSION</code> can be compared using the regular comparison
+        operators (<code>!=</code>, <code>==</code>, <code>&gt;</code>, <code>&lt;</code>, etc.).
+    </p>
 
     <h4>Class</h4>
-    When the C++ features are enabled, <b>NostraBase</b> also provides the class <code>nba::Version</code>. Similar to
-    the <code>NBA_MAKE_VERSION</code> macro, the constructor of <code>nba::Version</code> takes four integer numbers
-    that represent the single parts of the version. It also provides getters/setters for the parts and suitable
-    operators for comparison.
+    <p>
+        When the C++ features are enabled, <b>NostraBase</b> also provides the class <code>nba::Version</code>. Similar
+        to the <code>NBA_MAKE_VERSION</code> macro, the constructor of <code>nba::Version</code> takes four integer
+        numbers that represent the single parts of the version. It also provides getters/setters for the parts and
+        suitable operators for comparison.
+    </p>
 
     <nav>
-        <a href="introduction.html">&larr; Introduction</a> |
         <a href="../index.html">Index</a> |
         <a href="naming_conventions.html">Naming Conventions &rarr;</a>
     </nav>
