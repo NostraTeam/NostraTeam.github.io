@@ -1,10 +1,11 @@
 <!--
-This file serves as an example for a readme file in Nostra Projects, it is NOT the readme file for this (the Nostra 
-conventions) project.
+This file serves as an example for a README file in Nostra projects, it is NOT the README file for this repository.
+
+Also, this file has the extension .txt instead of .md which was done to correctly display it in web browsers. Regular
+README files still have the extension .md.
 -->
 
 # NostraTestProject
-
 An exemplary project that is part of Nostra.
 
 GitHub: &lt;the link to GitHub would go here, but this example has no GitHub repository&gt;
@@ -26,36 +27,35 @@ is required on Windows.
 
 To also build the documentation of the project, Doxygen (http://www.doxygen.nl/) is required.
 
-# How to build
+## Build and install from source
 First of all, the following steps assume that the current working directory of the shell is the root directory of the 
 project (the one that the file __CMakeLists.txt__ is in). It is also assumed that the command __cmake__ is in the PATH
 variable.
 
-The single steps in the build process are:
+The single steps in the build and installation process are:
 1. ```mkdir build```
 2. ```cd build```
 3. ```cmake ..```
-4. ```cmake --build .```
+4. ```cmake --build . --target install```
 
-It is also possible to pass various variables to the third command. These have the syntax
+These commands will build and install the project. They work with SH, BASH, cmd.exe and the powershell. If the project
+should not be installed, the fourth command needs to be changed to `cmake --build .`.
+
+It is also possible to pass various options to the third command. These have the syntax
 ```-D<variable name>=<value>```
 The following list describes some of the most commonly used variables.
 
-* CMAKE_INSTALL_PREFIX: The value is the path to the directory that the library should later be installed in. The
+- CMAKE_INSTALL_PREFIX: The value is the path to the directory that the library should later be installed in. The
   default value varies from system to system.
-* BUILD_TESTING: The value is either ON or OFF. It determines weather the tests should be build or not. The default 
+- BUILD_TESTING: The value is either ON or OFF. It determines weather the tests should be build or not. The default 
   value is ON.
-* NOSTRA_BUILD_EXAMPLES: The value is either ON or OFF. It determines weather the examples should be build or not. The 
+- NOSTRA_BUILD_EXAMPLES: The value is either ON or OFF. It determines weather the examples should be build or not. The 
   default value is ON.
-* NTP_BUILD_DOC: The value is either ON or OFF. It determines weather the documentation will be build or not. The 
+- NTP_BUILD_DOC: The value is either ON or OFF. It determines weather the documentation will be build or not. The 
   default value is ON.
 
-# How to install
-If the project was build from source, the command
-```cmake --build . --target install```
-will install the project.
-
-Currently, there is no other option and no installer is provided.
+## Installation from installer
+Currently, no installer is provided.
 
 ## Changelog
 ### Version 1.1.0.0
@@ -88,4 +88,3 @@ Currently, there is no other option and no installer is provided.
 #### Known Issues
 * buggy_feature::set_value() does not set the correct value
 * buggy_feature::get_value() does not return the correct value
-

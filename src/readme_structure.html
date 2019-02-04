@@ -63,9 +63,9 @@
     The additional requirements that are required to build the library (e.g. Doxygen to build the documentation or a
     C++ compiler).
 
-    <h4>How to build</h4>
-    A description on how to build the entire project from source. This includes tests, documentation, examples and the
-    library itself.
+    <h4>Build and install from source</h4>
+    A description on how to build and install the entire project from source using CTest. This includes tests,
+    documentation, examples and the library itself.
 
     <p>
         At this point, all of the CMake variables that are commonly used to modify the build should be listed as well.
@@ -73,12 +73,28 @@
 
     <p>
         Note that different operating systems may require different commands, not everybody is using the BASH or a
-        similar shell.
+        similar shell. However, optimally, the commands that are required to build and install are the following:
+        <code>
+            <pre>
+mkdir build
+cd build
+
+cmake ..
+cmake --build . --target install</pre>
+        </code>
     </p>
 
-    <h4>How to install</h4>
-    A description on how to install the library when it was build from the description in the previous chapter and
-    a description on how to install the library from an installer (if one is provided).
+    <h4>Installation from installer</h4>
+    A description on how to install the library from an installer (if one is provided). There should be also be a list
+    of available installers. If no installers are available, this chapter will tell that the reader.
+
+    <h4>Usage</h4>
+    If the project provides a library, this chapter will describe how to include to library into CMake using
+    <code>find_package()</code>. It will also give a short description how to locate the project if it was not
+    installed in a directory that is known to CMake by using `CMAKE_PREFIX_PATH`.
+
+    If the project provides executable(s), this chapter will give a short overview on what they do and how they are
+    used.
 
     <h4>Changelog</h4>
     The Changelog is a list of features that have been changed, added or removed from version to version. When a new
@@ -108,7 +124,7 @@
         For Markdown's website see <a href="https://daringfireball.net/projects/markdown/">this link</a>.
     </p>
     <p>
-        An example for a readme file can be found <a href="../additional_files/README.md">here</a>.
+        An example for a readme file can be found <a href="../additional_files/README.txt">here</a>.
     </p>
 
     <nav>
