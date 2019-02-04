@@ -9,7 +9,29 @@
 
 <body>
     <h1>Examples</h1>
-    TODO
+    <p>
+        Examples are meant to be an introduction for a user into a certain feature (or, in most cases, a component to
+        be more precise).
+    </p>
+
+    <h3>Example Names</h3>
+    The name of an example is the name of the component that the example is for (or another appropriate name if the
+    example is not for a single component) and a prefixed <i>.ex</i> (not to be confused with tests with the execution
+    type <b>ex</b>). This prefix is used to identify an executable as an example.
+
+    <h3>Example Directory Structure</h3>
+    All examples are nested in the directory <b>/examples/</b> (see
+    <a href="project_directory_structure.html">here</a>), but each example has its own directory structure that is
+    nested in that directory. The directory structure for each example looks like this (<b>bold</b> names are
+    directories).
+
+    <pre>
+<b>&lt;example name&gt;.d</b>
+└── &lt;example name&gt;.&lt;language extension&gt;</pre>
+
+    <p>
+        Unlike tests are examples meant to have only a single source file. This is meant to keep the example simple.
+    </p>
 
     <nav>
         <a href="tests.html">&larr; Tests</a> |
